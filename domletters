@@ -21,8 +21,6 @@ def main():
                 else:
                     # found existing character, increment count
                     char_hash[char] += 1
-            #print(i, max(char_hash, key=char_hash.get),
-            #     max(char_hash.values()))
             # add maximum occurring letter to sum
             sum += max(char_hash.values())
     print(sum)
