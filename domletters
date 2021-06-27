@@ -1,5 +1,32 @@
 #!/usr/bin/python
+import sys
+import re
 
 # Daniel Foland CS561
 
-print("Hello World.")
+
+def main():
+    # store input stream to string and separate on whitespace
+    input = sys.stdin.read().split()
+    sum = 0
+    for i in input:
+        # check if the word are valid characters
+        if re.match('[a-z|A-Z]+$', i):
+            char_hash = {}
+            i = i.lower()
+            for char in i:
+                if not char_hash.get(char):
+                    # found a new character, set count to one
+                    char_hash[char] = 1
+                else:
+                    # found existing character, increment count
+                    char_hash[char] += 1
+            #print(i, max(char_hash, key=char_hash.get),
+            #     max(char_hash.values()))
+            # add maximum occurring letter to sum
+            sum += max(char_hash.values())
+    print(sum)
+
+
+if __name__ == '__main__':
+    main()
